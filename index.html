@@ -3,224 +3,368 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#09060f">
 <title>NYXORA | العالم الخفي</title>
 <style>
-:root{color-scheme:dark;--bg:#09060f;--card:#171020;--purple:#a855f7;--light:#d9b4ff;--text:#f8f2ff;--muted:#b9a8c9;--border:#402653}
+:root{--bg:#09060f;--card:#171020;--purple:#a855f7;--light:#dfb8ff;--text:#f8f2ff;--muted:#bbaaca;--border:#402653}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 50% -15%,#35154c 0,transparent 48%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;min-height:100vh}
-button{font:inherit;cursor:pointer}
-button:focus-visible{outline:2px solid var(--light);outline-offset:3px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px max(18px,calc((100% - 980px)/2));border-bottom:1px solid var(--border);background:#09060fd9;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
-.logo{font-size:23px;font-weight:950;letter-spacing:3px;color:var(--light);text-shadow:0 0 22px #a855f755}
-button{border:1px solid #75469a;background:#261534;color:var(--text);padding:11px 15px;border-radius:12px;transition:.2s}
-button:hover{border-color:var(--light);transform:translateY(-1px)}
-main{width:min(940px,calc(100% - 28px));margin:25px auto 50px}
-.hero,.panel,.game,.chapter{border:1px solid var(--border);border-radius:20px;background:#171020eF;padding:22px;margin-bottom:16px;box-shadow:0 12px 40px #0002}
-.hero{text-align:center;padding:35px 20px;background:radial-gradient(ellipse at top,#45175f 0,#20102f 55%,#120b1b 100%);position:relative;overflow:hidden}
-.eyebrow{font-size:11px;letter-spacing:3px;color:var(--light);font-weight:800}
-h1{font-size:clamp(34px,8vw,58px);line-height:1.2;margin:14px 0;text-shadow:0 0 32px #a855f755}
-h2{font-size:21px;margin:0 0 16px}
-h3{font-size:19px;margin:12px 0}
-p{color:var(--muted);line-height:1.9}
-.primary{background:linear-gradient(120deg,#c084fc,#9333ea);border:0;color:#170a23;font-weight:850}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.stat{padding:13px 5px;text-align:center;border:1px solid var(--border);border-radius:14px;background:#100b18}
-.stat strong{display:block;font-size:24px;color:var(--light);margin-bottom:5px}
-.stat span{font-size:12px;color:var(--muted)}
-.progress{height:8px;background:#302039;border-radius:20px;overflow:hidden;margin:12px 0}
-.progress div{height:100%;width:0;background:linear-gradient(90deg,#9333ea,#e9c5ff);transition:width .3s}
-.chapter-row{display:flex;justify-content:space-between;gap:12px;align-items:center}
-.pill{font-size:12px;color:var(--light);border:1px solid var(--border);border-radius:30px;padding:6px 10px}
-.story{border-right:3px solid var(--purple);padding:3px 13px;margin:18px 0;color:#e4d4f4;line-height:1.9}
-.question{font-size:20px;line-height:1.7;margin:18px 0}
-.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.answers button{text-align:start;background:#21152d;min-height:48px}
-.answers button:disabled{cursor:default;opacity:.85;transform:none}
-.answers button.correct{border-color:#4ade80;background:#123323}
-.answers button.wrong{border-color:#fb7185;background:#381725}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.feedback{min-height:28px;line-height:1.8;font-weight:700;margin-top:13px;color:var(--light)}
+body{margin:0;background:radial-gradient(ellipse at top,#321044 0,transparent 42%),var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif;min-height:100vh}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px max(16px,calc((100% - 900px)/2));background:#09060feF;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.logo{font-size:23px;font-weight:950;letter-spacing:3px;color:var(--light)}
+button,input{font:inherit}
+button{padding:11px 14px;border:1px solid #704092;border-radius:11px;background:#261534;color:var(--text);cursor:pointer}
+button:hover:not(:disabled){border-color:var(--light);transform:translateY(-1px)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.primary{background:linear-gradient(120deg,#c084fc,#9333ea);color:#180a23;font-weight:850;border:0}
+main{width:min(900px,calc(100% - 24px));margin:20px auto 45px}
+.card{background:#171020ed;border:1px solid var(--border);border-radius:19px;padding:19px;margin-bottom:14px}
+.hero{text-align:center;padding:28px 18px;background:radial-gradient(ellipse at center,#43165c,#160d20 72%);overflow:hidden}
+.portal{height:150px;width:112px;margin:8px auto 20px;border:5px solid #8242b4;border-radius:50%;position:relative;display:grid;place-items:center;box-shadow:0 0 15px #a855f7,0 0 45px #8b2bdc,inset 0 0 25px #b974ff;animation:glow 3s infinite alternate}
+.portal:before{content:"";position:absolute;inset:7px;border:2px solid #d9b5ff;border-radius:50%;box-shadow:inset 0 0 22px #a855f7}
+.portal span{font-size:45px;z-index:1;filter:drop-shadow(0 0 10px #fff)}
+@keyframes glow{to{box-shadow:0 0 28px #a855f7,0 0 65px #8b2bdc,inset 0 0 35px #b974ff}}
+h1{font-size:clamp(32px,8vw,48px);margin:8px 0;color:var(--light)}
+h2{font-size:21px;margin:0 0 14px}
+h3{margin:10px 0}
+p{color:var(--muted);line-height:1.8}
+.eyebrow{color:var(--light);font-size:11px;letter-spacing:3px;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#100b18;border:1px solid var(--border);border-radius:12px;padding:12px 4px;text-align:center}
+.stat strong{display:block;color:var(--light);font-size:22px;margin-bottom:4px}
+.stat span{font-size:11px;color:var(--muted)}
+.worlds{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.world{padding:0;overflow:hidden;text-align:start;background:#110b19}
+.world-art{height:100px;display:grid;place-items:center;font-size:43px;background:radial-gradient(ellipse,#63318a,#160c20 72%);border-bottom:1px solid var(--border)}
+.world:nth-child(2) .world-art{background:radial-gradient(ellipse,#264c69,#100b19 72%)}
+.world:nth-child(3) .world-art{background:radial-gradient(ellipse,#742b55,#100b19 72%)}
+.world:nth-child(4) .world-art{background:radial-gradient(ellipse,#56208b,#05030b 72%)}
+.world-info{padding:12px}
+.world-info strong{display:block;margin-bottom:5px}
+.world-info small{color:var(--muted)}
+.tag{display:inline-block;font-size:11px;color:var(--light);border:1px solid var(--border);border-radius:20px;padding:4px 8px;margin-top:7px}
+.bar{height:7px;background:#302039;border-radius:20px;overflow:hidden;margin:12px 0}
+.bar div{height:100%;background:linear-gradient(90deg,#9333ea,#e9c5ff);width:0;transition:width .3s}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.question{font-size:20px;line-height:1.8;margin:18px 0}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.answers button{text-align:start;min-height:47px;background:#21152d}
+.answers button.good{background:#123323;border-color:#4ade80}
+.answers button.bad{background:#381725;border-color:#fb7185}
+.feedback{min-height:28px;line-height:1.8;color:var(--light);font-weight:bold;margin-top:12px}
 .small{font-size:12px;color:var(--muted)}
-.chapter-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.chapter-btn{text-align:center;padding:12px 4px;font-size:12px}
-.chapter-btn.active{background:#47205f;border-color:var(--light)}
-.chapter-btn:disabled{opacity:.42;cursor:not-allowed;transform:none}
-footer{text-align:center;padding:20px;color:#8e7b9d;font-size:12px}
-@media(max-width:430px){header{padding:13px}.logo{font-size:20px}.hero{padding:28px 15px}.panel,.game,.chapter{padding:17px}.answers{grid-template-columns:1fr}.chapter-list{grid-template-columns:repeat(3,minmax(0,1fr))}.stats{gap:6px}.stat strong{font-size:21px}}
+input{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:#0c0812;color:white;margin:6px 0 12px}
+footer{text-align:center;padding:20px;color:#887996;font-size:12px}
+[hidden]{display:none!important}
+@media(max-width:420px){.worlds{grid-template-columns:1fr 1fr}.world-art{height:85px}.card{padding:15px}.answers{grid-template-columns:1fr}.stats{gap:5px}.stat strong{font-size:19px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">NYXORA</div>
-  <button id="langBtn">🇬🇧 English</button>
+ <div class="logo">✧ NYXORA</div>
+ <button id="language">🇬🇧 English</button>
 </header>
 <main>
-  <section class="hero">
-    <div class="eyebrow" id="eyebrow">AN UNKNOWN WORLD</div>
-    <h1 id="heroTitle">العالم الخفي</h1>
-    <p id="heroDesc">خلف أبواب الظلام، تنتظرك أسرار لم يكتشفها أحد.</p>
-    <button class="primary" id="startBtn">ابدأ المغامرة ✦</button>
-  </section>
+ <section class="card hero">
+  <div class="eyebrow">THE HIDDEN REALM</div>
+  <div class="portal"><span>✦</span></div>
+  <h1 id="title">العالم الخفي</h1>
+  <p id="intro">أربع عوالم، 130 سؤالًا، وبوابة سرية لا تُفتح إلا للمستكشفين الحقيقيين.</p>
+  <button class="primary" id="start">ابدأ المغامرة ↓</button>
+ </section>
 
-  <section class="panel">
-    <h2 id="profileTitle">ملف المستكشف</h2>
-    <div class="stats">
-      <div class="stat"><strong id="xp">0</strong><span id="xpLabel">نقاط الخبرة</span></div>
-      <div class="stat"><strong id="level">1</strong><span id="levelLabel">المستوى</span></div>
-      <div class="stat"><strong id="completed">0/10</strong><span id="completedLabel">المراحل المكتملة</span></div>
-    </div>
-    <p class="small" id="progressText">التقدم نحو المستوى التالي</p>
-    <div class="progress"><div id="progressBar"></div></div>
-  </section>
+ <section class="card">
+  <h2 id="profile">ملف المستكشف</h2>
+  <div class="stats">
+   <div class="stat"><strong id="xp">0</strong><span id="xpLabel">نقاط الخبرة</span></div>
+   <div class="stat"><strong id="level">1</strong><span id="levelLabel">المستوى</span></div>
+   <div class="stat"><strong id="solved">0/130</strong><span id="solvedLabel">الأسئلة المحلولة</span></div>
+  </div>
+  <p class="small" id="progressText">التقدم</p>
+  <div class="bar"><div id="progress"></div></div>
+ </section>
 
-  <section class="chapter">
-    <div class="chapter-row">
-      <h2 id="chaptersTitle">خريطة المغامرة</h2>
-      <span class="pill" id="mapStatus">10 مراحل</span>
-    </div>
-    <div class="chapter-list" id="chapterList"></div>
-  </section>
+ <section class="card" id="map">
+  <h2 id="mapTitle">خريطة العوالم</h2>
+  <div class="worlds" id="worlds"></div>
+ </section>
 
-  <section class="game" id="game">
-    <div class="chapter-row">
-      <div class="eyebrow" id="stageLabel">المرحلة 01</div>
-      <span class="pill" id="reward">+20 XP</span>
-    </div>
-    <h3 id="stageTitle">البوابة المنسية</h3>
-    <p class="story" id="story"></p>
-    <div class="question" id="question"></div>
-    <div class="answers" id="answers"></div>
-    <div class="feedback" id="feedback" aria-live="polite"></div>
-    <div class="actions">
-      <button id="hintBtn">💡 تلميح</button>
-      <button class="primary" id="nextBtn" hidden>المرحلة التالية ←</button>
-    </div>
-    <p class="small" id="hintNote">لكل مرحلة تلميح يساعدك على اكتشاف الحل.</p>
-  </section>
+ <section class="card" id="game">
+  <div class="row">
+   <span class="eyebrow" id="stageLabel">العالم الأول</span>
+   <span class="tag" id="timer">⏱ 00:00</span>
+  </div>
+  <h2 id="stageTitle">بوابة الظلال</h2>
+  <p id="story">اقترب من البوابة، وأثبت أنك تستحق الدخول.</p>
+  <div class="row">
+   <span class="tag" id="questionCount">السؤال 1 من 20</span>
+   <span class="tag" id="attempts">المحاولات: 3</span>
+   <span class="tag" id="hints">التلميحات: 3</span>
+  </div>
+  <div class="question" id="question"></div>
+  <div class="answers" id="answers"></div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="row" style="margin-top:12px">
+   <button id="hintBtn">💡 استخدم تلميحًا</button>
+   <button class="primary" id="nextBtn" hidden>التالي ←</button>
+  </div>
+ </section>
 
-  <section class="panel">
-    <h2 id="saveTitle">حفظ المغامرة</h2>
-    <p id="saveDesc">يُحفظ تقدمك تلقائيًا في هذا المتصفح على جهازك.</p>
-    <button id="resetBtn">إعادة بدء المغامرة</button>
-  </section>
+ <section class="card" id="secretMission" hidden>
+  <h2 id="missionTitle">🔐 المهمة السرية</h2>
+  <p id="missionText">اجمع أعداد أسئلة العوالم الثلاثة الأولى، واكتبها متتابعة بالترتيب لفتح البوابة السرية.</p>
+  <input id="missionCode" inputmode="numeric" placeholder="أدخل الشفرة">
+  <button class="primary" id="unlock">فتح البوابة</button>
+  <p id="missionFeedback" class="feedback"></p>
+ </section>
+
+ <section class="card">
+  <h2 id="recordTitle">🏆 أفضل أوقاتك</h2>
+  <p id="recordNote">تُحفظ أسرع أوقاتك محليًا على هذا الجهاز. هذه ليست لوحة ترتيب مشتركة بين اللاعبين.</p>
+  <div id="records"></div>
+ </section>
+
+ <section class="card">
+  <h2 id="accountTitle">🔐 حساب المستكشف</h2>
+  <p id="accountNote">واجهة الحسابات ستُربط بخدمة آمنة في خطوة لاحقة. لا تدخل كلمة مرورك هنا في هذه النسخة التجريبية.</p>
+ </section>
+
+ <section class="card">
+  <button id="reset">إعادة ضبط التقدم</button>
+  <p class="small" id="saveNote">التقدم محفوظ في المتصفح على هذا الجهاز فقط.</p>
+ </section>
 </main>
-<footer id="footer">NYXORA © العالم الخفي — تبدأ الأساطير من هنا.</footer>
-
+<footer>NYXORA © The Hidden Realm</footer>
 <script>
-const stages = [
- {title:["البوابة المنسية","The Forgotten Gate"],story:["تستيقظ أمام بوابة حجرية. وعلى قفلها لغز قديم: ما الشيء الذي له أسنان ولا يعض؟","You awaken before a stone gate. Its ancient lock asks: What has teeth but cannot bite?"],q:["ما الشيء الذي له أسنان ولا يعض؟","What has teeth but cannot bite?"],a:[["المشط","A comb"],["الكتاب","A book"],["الساعة","A clock"],["الباب","A door"]],c:0,h:["تستخدمه لترتيب شعرك.","You use it to arrange your hair."]},
- {title:["غرفة الأرقام","The Chamber of Numbers"],story:["تفتح البوابة وتدخل غرفة تتوهج جدرانها بالأرقام. يظهر تسلسل غريب على الأرض.","The gate opens into a room of glowing numbers. A strange sequence appears on the floor."],q:["ما العدد التالي: 2، 4، 8، 16، ؟","What comes next: 2, 4, 8, 16, ?"],a:[["18","18"],["24","24"],["32","32"],["20","20"]],c:2,h:["كل عدد يساوي ضعف العدد الذي قبله.","Each number is twice the previous one."]},
- {title:["بئر الأسرار","The Well of Secrets"],story:["تسمع صوتًا قادمًا من بئر مظلم: كلما أخذت مني، أصبحت أكبر. ما أنا؟","A voice rises from a dark well: The more you take away from me, the bigger I become. What am I?"],q:["شيء يكبر كلما أخذت منه، ما هو؟","What gets bigger the more you take away?"],a:[["الظل","A shadow"],["الحفرة","A hole"],["العمر","Age"],["البحر","The sea"]],c:1,h:["قد تحفره في الأرض.","You can dig it in the ground."]},
- {title:["مكتبة الظلال","The Library of Shadows"],story:["بين الكتب القديمة تجد ورقة تتحدث عن شيء له عين لكنه لا يرى.","Among the ancient books, you find a note about something with an eye that cannot see."],q:["ما الشيء الذي له عين ولا يرى؟","What has an eye but cannot see?"],a:[["الإبرة","A needle"],["القمر","The moon"],["المرآة","A mirror"],["الطائر","A bird"]],c:0,h:["تُستخدم مع الخيط لخياطة الملابس.","It is used with thread to sew clothes."]},
- {title:["شفرة المتتالية","The Sequence Code"],story:["تضيء خمسة رموز على الجدار. يقول الحارس إن فهم ترتيبها سيفتح الطريق.","Five symbols glow on the wall. The guardian says their order will reveal the path."],q:["أكمل المتتالية: 1، 1، 2، 3، 5، ؟","Complete the sequence: 1, 1, 2, 3, 5, ?"],a:[["6","6"],["7","7"],["8","8"],["10","10"]],c:2,h:["اجمع آخر عددين لتحصل على العدد التالي.","Add the last two numbers to get the next one."]},
- {title:["رسالة الحارس","The Guardian's Message"],story:["يظهر حارس حجري ويسألك عن الشيء الذي كلما زاد نقص. فكر جيدًا.","A stone guardian asks you about something that decreases as it increases. Think carefully."],q:["ما الشيء الذي كلما زاد عمره نقص؟","What gets shorter as it gets older?"],a:[["الشمعة","A candle"],["الجبل","A mountain"],["الكتاب","A book"],["النهر","A river"]],c:0,h:["يضيء المكان ثم يقصر تدريجيًا.","It lights a room and gradually becomes shorter."]},
- {title:["الجسر المكسور","The Broken Bridge"],story:["أمامك جسر لا يعبره إلا من يحل لغز الوقت.","A broken bridge blocks the path. Only those who solve the time riddle can cross."],q:["كم دقيقة في ساعتين؟","How many minutes are in two hours?"],a:[["60","60"],["90","90"],["120","120"],["180","180"]],c:2,h:["الساعة الواحدة فيها 60 دقيقة.","One hour contains 60 minutes."]},
- {title:["الغرفة الصامتة","The Silent Room"],story:["تدخل غرفة بلا نوافذ. تجد تقويمًا وورقة عليها سؤال بسيط.","You enter a windowless room and find a calendar with a simple question."],q:["كم شهرًا في السنة؟","How many months are in a year?"],a:[["10","10"],["11","11"],["12","12"],["13","13"]],c:2,h:["يبدأ العام في يناير وينتهي في ديسمبر.","The year starts in January and ends in December."]},
- {title:["مفتاح النجوم","The Star Key"],story:["تضيء النجوم فوقك. كل نجمة تحمل عددًا، ولا يفتح الباب إلا بالعدد الصحيح.","Stars shine overhead. Each carries a number, and only the correct number opens the door."],q:["ما العدد الزوجي؟","Which number is even?"],a:[["7","7"],["11","11"],["14","14"],["19","19"]],c:2,h:["العدد الزوجي يقبل القسمة على 2 دون باقٍ.","An even number is divisible by 2 without a remainder."]},
- {title:["قلب نيكسورا","The Heart of NYXORA"],story:["وصلت إلى قلب العالم الخفي. أمامك آخر اختبار لتثبت أنك مستكشف حقيقي.","You have reached the heart of the hidden realm. One final test remains."],q:["إذا كان لديك 3 مفاتيح وأضفت مفتاحين، فكم أصبح لديك؟","You have 3 keys and find 2 more. How many do you have?"],a:[["4","4"],["5","5"],["6","6"],["7","7"]],c:1,h:["اجمع ثلاثة واثنين.","Add three and two."]}
-];
-
-const text = {
- ar:{lang:"🇬🇧 English",eyebrow:"عالم لم يُكتشف",title:"العالم الخفي",desc:"خلف أبواب الظلام، تنتظرك أسرار لم يكتشفها أحد.",start:"ابدأ المغامرة ✦",profile:"ملف المستكشف",xp:"نقاط الخبرة",level:"المستوى",completed:"المراحل المكتملة",progress:"التقدم للمستوى التالي",chapters:"خريطة المغامرة",map:"10 مراحل",stage:"المرحلة",reward:"+20 XP",hint:"💡 تلميح",next:"المرحلة التالية ←",hintNote:"لكل مرحلة تلميح يساعدك على اكتشاف الحل.",save:"حفظ المغامرة",saveDesc:"يُحفظ تقدمك تلقائيًا في هذا المتصفح على جهازك.",reset:"إعادة بدء المغامرة",footer:"NYXORA © العالم الخفي — تبدأ الأساطير من هنا.",right:"إجابة صحيحة! +20 XP ✨",wrong:"ليست الإجابة الصحيحة، حاول مرة أخرى.",hintText:"التلميح: ",done:"أكملت المغامرة! أنت بطل العالم الخفي! 🏆",locked:"أكمل المرحلة السابقة أولًا.",confirm:"هل تريد إعادة ضبط تقدمك ونقاطك؟",complete:"مكتملة",current:"الحالية",open:"متاحة"},
- en:{lang:"🇸🇦 العربية",eyebrow:"AN UNKNOWN WORLD",title:"THE HIDDEN REALM",desc:"Beyond the gates of darkness, secrets await discovery.",start:"Begin Adventure ✦",profile:"Explorer Profile",xp:"Experience Points",level:"Level",completed:"Stages Completed",progress:"Progress to next level",chapters:"Adventure Map",map:"10 stages",stage:"Stage",reward:"+20 XP",hint:"💡 Hint",next:"Next Stage →",hintNote:"Every stage has a hint to help you solve the puzzle.",save:"Adventure Save",saveDesc:"Your progress is saved automatically in this browser on this device.",reset:"Reset Adventure",footer:"NYXORA © The Hidden Realm — Legends begin here.",right:"Correct answer! +20 XP ✨",wrong:"Not quite right. Try again.",hintText:"Hint: ",done:"Adventure completed! You are a hero of the Hidden Realm! 🏆",locked:"Complete the previous stage first.",confirm:"Reset your progress and points?",complete:"Complete",current:"Current",open:"Available"}
-};
-
-let lang="ar", index=0, data={xp:0,done:[]}, answered=false, hinted=false;
 const $=id=>document.getElementById(id);
+const names=[
+ {ar:"بوابة الظلال",en:"Gate of Shadows",icon:"🌀",count:20,diff:"سهل",hints:3},
+ {ar:"مملكة البلورات",en:"Crystal Kingdom",icon:"💎",count:40,diff:"متوسط",hints:2},
+ {ar:"عرش اللعنة",en:"Cursed Throne",icon:"🏰",count:60,diff:"صعب",hints:1},
+ {ar:"ما وراء نيكسورا",en:"Beyond NYXORA",icon:"🌌",count:10,diff:"سري",hints:0}
+];
+const bank=[
+ [
+  ["ما الشيء الذي له أسنان ولا يعض؟",["المشط","الكتاب","الباب","الساعة"],0,"تستخدمه لترتيب الشعر."],
+  ["كم ضلعًا للمثلث؟",["2","3","4","5"],1,"شكل هندسي له ثلاثة أضلاع."],
+  ["ما نصف العدد 18؟",["6","8","9","12"],2,"اقسم العدد على اثنين."],
+  ["كم دقيقة في ساعة؟",["30","45","60","100"],2,"أكثر من نصف الساعة بعشر دقائق."],
+  ["ما العدد التالي: 2، 4، 6، 8، ؟",["9","10","12","16"],1,"أضف اثنين في كل مرة."],
+  ["ما حاصل 7 + 5؟",["10","11","12","13"],2,"أكمل من سبعة خمس خطوات."],
+  ["أيها أكبر؟",["ربع","نصف","متساويان","لا يمكن معرفة ذلك"],1,"قارن كسرين لهما نفس المقام."],
+  ["ما حاصل 3 × 4؟",["7","10","12","14"],2,"اجمع العدد 3 أربع مرات."],
+  ["كم يومًا في أسبوع عادي؟",["5","6","7","8"],2,"الأسبوع يبدأ وينتهي بعد سبعة أيام."],
+  ["ما العدد الناقص: 5، 10، 15، ؟",["18","20","25","30"],1,"الزيادة ثابتة."],
+  ["أي شهر يأتي بعد مارس؟",["فبراير","أبريل","يونيو","يناير"],1,"هو الشهر الرابع."],
+  ["ما عكس كلمة طويل؟",["عريض","قصير","واسع","ثقيل"],1,"صفة للطول القليل."],
+  ["كم يساوي 20 - 8؟",["10","11","12","14"],2,"اطرح ثمانية من عشرين."],
+  ["أي شكل له أربعة أضلاع متساوية وزوايا قائمة؟",["الدائرة","المربع","المثلث","المخروط"],1,"له أربع زوايا قائمة."],
+  ["ما العدد الزوجي؟",["3","7","12","15"],2,"يقبل القسمة على اثنين."],
+  ["ما حاصل 5 × 5؟",["10","20","25","30"],2,"خمسة مضروبة في نفسها."],
+  ["أمامك 3 تفاحات وأخذت واحدة، كم معك؟",["1","2","3","4"],0,"السؤال عن ما أخذته أنت."],
+  ["ما العدد التالي: 1، 2، 3، 4، ؟",["4","5","6","8"],1,"الأعداد تزيد واحدًا."],
+  ["كم عينًا للإنسان عادة؟",["1","2","3","4"],1,"تأمل وجهك في المرآة."],
+  ["ما حاصل 10 + 15؟",["20","25","30","35"],1,"أضف عشرة إلى خمسة عشر."]
+ ],
+ [
+  ["ما العدد التالي: 3، 6، 12، 24، ؟",["36","42","48","54"],2,"كل عدد ضعف السابق."],
+  ["إذا كان x + 9 = 21، فما x؟",["10","11","12","13"],2,"اطرح تسعة من الطرفين."],
+  ["ما مربع العدد 7؟",["14","42","49","56"],2,"اضرب سبعة في سبعة."],
+  ["ما العدد التالي: 2، 5، 10، 17، ؟",["24","25","26","27"],2,"الفروق هي 3 ثم 5 ثم 7."],
+  ["إذا كان 4x = 36، فما x؟",["6","8","9","12"],2,"اقسم 36 على أربعة."],
+  ["ما مجموع زوايا المثلث؟",["90°","180°","270°","360°"],1,"نصف مجموع زوايا الشكل الرباعي."],
+  ["ما العدد التالي: 1، 4، 9، 16، ؟",["20","24","25","36"],2,"هذه مربعات الأعداد الصحيحة."],
+  ["إذا كان ثمن 3 كتب 24، فكم ثمن 5 كتب بالسعر نفسه؟",["32","36","40","48"],2,"احسب ثمن الكتاب الواحد أولًا."],
+  ["ما حاصل 15% من 200؟",["15","20","30","40"],2,"عشرة بالمئة تساوي 20."],
+  ["ما العدد التالي: 81، 27، 9، 3، ؟",["0","1","2","6"],1,"اقسم على ثلاثة كل مرة."]
+ ],
+ [
+  ["إذا كان 3x + 7 = 40، فما x؟",["9","10","11","12"],1,"اطرح 7 ثم اقسم على 3."],
+  ["ما العدد التالي: 2، 6، 12، 20، 30، ؟",["36","40","42","44"],2,"الفروق تزيد بمقدار اثنين."],
+  ["عدد إذا ضربته في نفسه ثم أضفت 1 أصبح 50، فما العدد الموجب؟",["5","6","7","8"],2,"49 مربع كامل."],
+  ["إذا كان x + y = 15 وx - y = 3، فما x؟",["6","9","12","15"],1,"اجمع المعادلتين لتحذف y."],
+  ["ما العدد التالي: 1، 2، 6، 24، ؟",["48","96","100","120"],3,"اضرب في 2 ثم 3 ثم 4 ثم 5."],
+  ["لديك 3 مفاتيح و3 أبواب، وتجربة كل مفتاح على كل باب مرة واحدة كافية. ما أقصى عدد تجارب؟",["3","6","9","12"],2,"كل مفتاح قد يجرب على كل باب."],
+  ["ما الجذر التربيعي لـ 225؟",["12","13","15","25"],2,"خمسة عشر في خمسة عشر."],
+  ["إذا كان 2^x = 64، فما x؟",["4","5","6","8"],2,"كم مرة تضرب 2 بنفسها لتحصل على 64؟"],
+  ["عدد أولي بين 30 و40؟",["31","33","35","39"],0,"لا يقبل القسمة إلا على نفسه وواحد."],
+  ["إذا كان متوسط 4 أعداد هو 12، فما مجموعها؟",["16","36","48","60"],2,"المتوسط مضروبًا في عدد القيم."]
+ ],
+ [
+  ["إذا كان رمز البوابة هو مجموع 20 و40 و60، فما الناتج؟",["100","110","120","130"],2,"اجمع أعداد الأسئلة في العوالم الثلاثة."],
+  ["ما العدد التالي: 1، 4، 10، 22، 46، ؟",["90","92","94","96"],2,"اضرب في اثنين ثم أضف اثنين."],
+  ["إذا كان x² = 144 وx موجب، فما x؟",["10","11","12","14"],2,"ابحث عن العدد الذي مربعه 144."],
+  ["لدى حارس صندوقان: أحدهما فيه مفتاح والآخر فارغ. عبارة واحدة صحيحة من عبارتين متناقضتين. ماذا يجب أن تفعل؟",["اختر عشوائيًا","تحقق من دليل إضافي","افترض أن كليهما صحيح","افتحهما معًا"],1,"المعلومة وحدها لا تحدد مكان المفتاح."]
+ ]
+];
+function makeQuestion(world,i){
+ const fixed=bank[world][i];
+ if(fixed)return {q:fixed[0],a:fixed[1],c:fixed[2],h:fixed[3]};
+ let q,a,c,h;
+ if(world===0){
+  const n=i+2;
+  if(i%4===0){q=`ما حاصل ${n} + ${n+7}؟`;c=2;a=[String(n+6),String(n+7),String(2*n+7),String(2*n+9)];}
+  else if(i%4===1){q=`ما حاصل ${n+3} × 2؟`;c=1;a=[String(n+3),String(2*n+6),String(2*n+5),String(n+6)];}
+  else if(i%4===2){q=`ما العدد التالي: ${n}, ${n+2}, ${n+4}, ؟`;c=2;a=[String(n+5),String(n+3),String(n+6),String(n+8)];}
+  else{q=`كم يساوي ${n+10} - ${n}؟`;c=1;a=[String(n),String(10),String(n+1),String(20)];}
+  h="استخدم عملية حسابية بسيطة، ثم تحقق من النتيجة.";
+ }else if(world===1){
+  const n=i+5;
+  if(i%3===0){q=`إذا كان 3x = ${3*n}، فما x؟`;c=1;a=[String(n-1),String(n),String(n+1),String(n*3)];}
+  else if(i%3===1){q=`ما مربع العدد ${n}؟`;c=2;a=[String(n*2),String(n*n-1),String(n*n),String(n*n+1)];}
+  else{q=`ما العدد التالي: ${n}, ${n*2}, ${n*4}, ؟`;c=0;a=[String(n*8),String(n*6),String(n*4+2),String(n*10)];}
+  h="اكتب العلاقة بين الأعداد قبل اختيار الإجابة.";
+ }else if(world===2){
+  const n=i+7;
+  if(i%3===0){q=`إذا كان 4x + 4 = ${4*n+4}، فما x؟`;c=2;a=[String(n-2),String(n-1),String(n),String(n+2)];}
+  else if(i%3===1){q=`ما العدد التالي: ${n}, ${n+3}, ${n+8}, ${n+15}, ؟`;c=1;a=[String(n+20),String(n+24),String(n+25),String(n+30)];}
+  else{q=`ما حاصل ${n} × ${n} - ${n}؟`;c=0;a=[String(n*n-n),String(n*n),String(n*n+n),String(n*2)];}
+  h="حل المسألة على مراحل، ولا تتجاوز خطوة.";
+ }else{
+  const n=i+11;
+  if(i%3===0){q=`إذا كان x² - ${n*n} = 0 وx موجب، فما x؟`;c=2;a=[String(n-1),String(n+1),String(n),String(n*n)];}
+  else if(i%3===1){q=`ما العدد التالي: ${n}, ${n*2+1}, ${n*4+3}, ${n*8+7}, ؟`;c=1;a=[String(n*16+14),String(n*16+15),String(n*12+9),String(n*16+7)];}
+  else{q=`إذا كان 2x + 3 = ${2*n+3}، ثم أضفت 5 إلى x، فما الناتج؟`;c=0;a=[String(n+5),String(n+3),String(n+8),String(n*2+5)];}
+  h="هذا اختبار نهائي؛ قسّم اللغز إلى خطوات صغيرة.";
+ }
+ const answer=Number(a[c]);
+ const opts=[...new Set(a)];
+ while(opts.length<4)opts.push(String(answer+opts.length+17));
+ return {q,a:opts,c:opts.indexOf(String(answer)),h};
+}
+const worlds=names.map((w,wi)=>({...w,questions:Array.from({length:w.count},(_,i)=>makeQuestion(wi,i))}));
+const total=130;
+let state={done:[[],[],[],[]],best:{},unlocked:false};
+let wi=0,qi=0,tries=3,hintsLeft=3,usedHint=false,finishedQuestion=false,startTime=0,ticker=null,elapsed=0,lang="ar";
 try{
- const old=JSON.parse(localStorage.getItem("nyxora-adventure-v2"));
- if(old&&Number.isFinite(old.xp)&&Array.isArray(old.done)){
-  data.xp=Math.max(0,old.xp);
-  data.done=[...new Set(old.done.filter(n=>Number.isInteger(n)&&n>=0&&n<stages.length))];
-  data.xp=data.done.length*20;
+ const old=JSON.parse(localStorage.getItem("nyxora-v3"));
+ if(old&&Array.isArray(old.done)&&old.done.length===4){
+  state.done=old.done.map((arr,i)=>Array.isArray(arr)?[...new Set(arr.filter(n=>Number.isInteger(n)&&n>=0&&n<worlds[i].count))]:[]);
+  state.best=old.best&&typeof old.best==="object"?old.best:{};
+  state.unlocked=!!old.unlocked;
  }
 }catch(e){}
-function save(){try{localStorage.setItem("nyxora-adventure-v2",JSON.stringify(data))}catch(e){}}
-function level(){return Math.floor(data.xp/60)+1}
+function save(){try{localStorage.setItem("nyxora-v3",JSON.stringify(state))}catch(e){}}
+function countDone(){return state.done.reduce((n,a)=>n+a.length,0)}
+function level(){return Math.floor(countDone()/10)+1}
+function isOpen(w){return w===0||(w===1&&state.done[0].length===20)||(w===2&&state.done[1].length===40)||(w===3&&state.unlocked)}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function startClock(){if(!startTime){startTime=Date.now()-elapsed*1000;ticker=setInterval(()=>{$("timer").textContent="⏱ "+fmt(Math.floor((Date.now()-startTime)/1000))},1000)}}
 function updateStats(){
- $("xp").textContent=data.xp;
+ $("xp").textContent=countDone()*20;
  $("level").textContent=level();
- $("completed").textContent=data.done.length+"/10";
- $("progressBar").style.width=(data.xp%60)/60*100+"%";
- $("progressText").textContent=text[lang].progress+" ("+(data.xp%60)+"/60)";
+ $("solved").textContent=countDone()+"/"+total;
+ $("progress").style.width=countDone()/total*100+"%";
+ $("progressText").textContent=lang==="ar"?"التقدم الكلي: "+countDone()+" من "+total:"Overall progress: "+countDone()+" of "+total;
 }
-function renderMap(){
- const box=$("chapterList");box.innerHTML="";
- stages.forEach((s,i)=>{
-  const b=document.createElement("button");
-  b.className="chapter-btn"+(i===index?" active":"");
-  b.disabled=i>0&&!data.done.includes(i-1);
-  b.textContent=(data.done.includes(i)?"✓ ":i===index?"◆ ":"◇ ")+(i+1);
-  b.title=s.title[lang==="ar"?0:1];
-  b.onclick=()=>{if(i===0||data.done.includes(i-1)){index=i;renderStage();$("game").scrollIntoView({behavior:"smooth",block:"start"})}};
-  box.appendChild(b);
+function renderWorlds(){
+ $("worlds").innerHTML="";
+ worlds.forEach((w,i)=>{
+  const b=document.createElement("button");b.className="world";b.disabled=!isOpen(i);
+  const completed=state.done[i].length;
+  b.innerHTML=`<div class="world-art">${w.icon}</div><div class="world-info"><strong>${lang==="ar"?w.ar:w.en}</strong><small>${completed}/${w.count} ${lang==="ar"?"سؤال":"questions"}</small><br><span class="tag">${isOpen(i)?(completed===w.count?(lang==="ar"?"مكتمل":"Complete"):(lang==="ar"?"متاح":"Available")):(lang==="ar"?"🔒 مقفل":"🔒 Locked")}</span></div>`;
+  b.onclick=()=>{wi=i;qi=firstUnsolved(i);hintsLeft=w.hints;tries=3;usedHint=false;finishedQuestion=false;startTime=0;elapsed=0;if(ticker)clearInterval(ticker);ticker=null;renderStage();$("game").scrollIntoView({behavior:"smooth",block:"start"})};
+  $("worlds").appendChild(b);
  });
 }
+function firstUnsolved(w){const n=state.done[w];for(let i=0;i<worlds[w].count;i++)if(!n.includes(i))return i;return worlds[w].count-1}
 function renderStage(){
- const s=stages[index],done=data.done.includes(index),t=text[lang];
- answered=done;hinted=false;
- $("stageLabel").textContent=t.stage+" "+String(index+1).padStart(2,"0");
- $("reward").textContent=t.reward;
- $("stageTitle").textContent=s.title[lang==="ar"?0:1];
- $("story").textContent=s.story[lang==="ar"?0:1];
- $("question").textContent=s.q[lang==="ar"?0:1];
- $("feedback").textContent=done?(index===stages.length-1?t.done:t.right):"";
+ const w=worlds[wi],q=w.questions[qi];
+ $("stageLabel").textContent=(lang==="ar"?"العالم ":"WORLD ")+(wi+1);
+ $("stageTitle").textContent=lang==="ar"?w.ar:w.en;
+ $("story").textContent=wi===0?(lang==="ar"?"اقترب من البوابة البنفسجية. كل إجابة صحيحة تقربك من أسرار نيكسورا.":"Approach the violet gate. Every correct answer reveals more of NYXORA."):wi===3?(lang==="ar"?"وصلت إلى العالم السري. كل خطأ هنا اختبار لقدرتك على التفكير.":"You reached the secret realm. Every puzzle tests your reasoning."):lang==="ar"?"لا تتسرع. اقرأ السؤال، حلله، ثم اختر إجابتك.":"Take your time. Analyze the puzzle before choosing.";
+ $("questionCount").textContent=(lang==="ar"?"السؤال ":"Question ")+(qi+1)+(lang==="ar"?" من ":" of ")+w.count;
+ $("attempts").textContent=(lang==="ar"?"المحاولات: ":"Attempts: ")+tries;
+ $("hints").textContent=(lang==="ar"?"التلميحات: ":"Hints: ")+hintsLeft;
+ $("question").textContent=q.q;
  $("answers").innerHTML="";
- s.a.forEach((pair,i)=>{
-  const b=document.createElement("button");
-  b.textContent=pair[lang==="ar"?0:1];
-  b.disabled=done;
-  b.onclick=()=>answer(i,b);
-  $("answers").appendChild(b);
- });
- $("nextBtn").hidden=!done;
- $("nextBtn").textContent=index===stages.length-1?t.done:t.next;
- $("hintBtn").disabled=done;
- $("hintBtn").textContent=t.hint;
- $("hintNote").textContent=t.hintNote;
- renderMap();
+ const already=state.done[wi].includes(qi);
+ q.a.forEach((a,i)=>{const b=document.createElement("button");b.textContent=a;b.disabled=already||finishedQuestion;b.onclick=()=>answer(i,b);$("answers").appendChild(b)});
+ $("feedback").textContent=already?(lang==="ar"?"أكملت هذا السؤال من قبل.":"You already completed this question."):"";
+ $("nextBtn").hidden=!already&&!finishedQuestion;
+ $("nextBtn").textContent=qi===w.count-1?(lang==="ar"?"إنهاء العالم":"Finish world"):(lang==="ar"?"السؤال التالي ←":"Next question →");
+ $("hintBtn").disabled=already||finishedQuestion||hintsLeft<=0||usedHint;
+ $("hintBtn").textContent=lang==="ar"?"💡 استخدم تلميحًا":"💡 Use a hint";
+ $("timer").textContent="⏱ "+fmt(elapsed);
+ updateStats();renderWorlds();
 }
 function answer(choice,button){
- if(answered)return;
- const t=text[lang],s=stages[index];
- if(choice===s.c){
-  answered=true;data.done.push(index);data.xp+=20;save();updateStats();
-  $("feedback").textContent=t.right;
-  document.querySelectorAll("#answers button").forEach((b,i)=>{b.disabled=true;if(i===s.c)b.classList.add("correct")});
-  $("nextBtn").hidden=false;
-  renderMap();
+ if(finishedQuestion)return;
+ startClock();
+ const q=worlds[wi].questions[qi];
+ if(choice===q.c){
+  finishedQuestion=true;
+  if(!state.done[wi].includes(qi))state.done[wi].push(qi);
+  const buttons=$("answers").querySelectorAll("button");
+  buttons.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("good")});
+  $("feedback").textContent=lang==="ar"?"إجابة صحيحة! +20 نقطة ✨":"Correct! +20 points ✨";
+  $("nextBtn").hidden=false;save();updateStats();renderWorlds();
  }else{
-  button.disabled=true;button.classList.add("wrong");
-  $("feedback").textContent=t.wrong;
+  tries--;button.disabled=true;button.classList.add("bad");
+  $("attempts").textContent=(lang==="ar"?"المحاولات: ":"Attempts: ")+tries;
+  if(tries<=0){
+   finishedQuestion=true;
+   $("answers").querySelectorAll("button").forEach(b=>b.disabled=true);
+   $("feedback").textContent=lang==="ar"?"انتهت المحاولات! راجع التلميح ثم أعد السؤال.":"No attempts left! Review the hint and retry the question.";
+   $("nextBtn").hidden=false;
+   $("nextBtn").textContent=lang==="ar"?"إعادة السؤال":"Retry question";
+  }else $("feedback").textContent=lang==="ar"?"إجابة خاطئة! بقيت "+tries+" محاولات.":"Wrong answer! "+tries+" attempts left.";
  }
 }
-function setLanguage(next){
- lang=next;const t=text[lang];
- document.documentElement.lang=lang;
- document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- const map={langBtn:"lang",eyebrow:"eyebrow",heroTitle:"title",heroDesc:"desc",startBtn:"start",profileTitle:"profile",xpLabel:"xp",levelLabel:"level",completedLabel:"completed",chaptersTitle:"chapters",mapStatus:"map",hintBtn:"hint",hintNote:"hintNote",saveTitle:"save",saveDesc:"saveDesc",resetBtn:"reset",footer:"footer"};
- Object.entries(map).forEach(([id,key])=>$(id).textContent=t[key]);
- updateStats();renderStage();
-}
-$("langBtn").onclick=()=>setLanguage(lang==="ar"?"en":"ar");
-$("startBtn").onclick=()=>{$("game").scrollIntoView({behavior:"smooth",block:"start"})};
 $("hintBtn").onclick=()=>{
- if(answered||hinted)return;
- hinted=true;
- $("feedback").textContent=text[lang].hintText+stages[index].h[lang==="ar"?0:1];
+ if(hintsLeft<=0||usedHint||finishedQuestion)return;
+ hintsLeft--;usedHint=true;
+ $("hints").textContent=(lang==="ar"?"التلميحات: ":"Hints: ")+hintsLeft;
+ $("feedback").textContent=(lang==="ar"?"التلميح: ":"Hint: ")+worlds[wi].questions[qi].h;
  $("hintBtn").disabled=true;
 };
 $("nextBtn").onclick=()=>{
- if(index<stages.length-1&&data.done.includes(index)){index++;renderStage();$("game").scrollIntoView({behavior:"smooth",block:"start"})}
- else if(data.done.length===stages.length){$("feedback").textContent=text[lang].done}
+ if(finishedQuestion&&tries<=0&&!state.done[wi].includes(qi)){
+  tries=3;finishedQuestion=false;usedHint=false;renderStage();return;
+ }
+ if(!state.done[wi].includes(qi))return;
+ if(qi<worlds[wi].count-1){qi++;tries=3;usedHint=false;finishedQuestion=false;renderStage()}
+ else{
+  elapsed=startTime?Math.floor((Date.now()-startTime)/1000):elapsed;
+  if(ticker)clearInterval(ticker);ticker=null;startTime=0;
+  const key=String(wi),old=state.best[key];
+  if(old===undefined||elapsed<old)state.best[key]=elapsed;
+  save();
+  if(wi===0||wi===1||wi===2){$("feedback").textContent=lang==="ar"?"أحسنت! أكملت العالم. افتح الخريطة للعالم التالي.":"World completed! Return to the map for your next world."}
+  if(wi===2){$("secretMission").hidden=false}
+  renderRecords();renderWorlds();
+ }
 };
-$("resetBtn").onclick=()=>{
- if(confirm(text[lang].confirm)){data={xp:0,done:[]};index=0;save();updateStats();renderStage()}
+$("unlock").onclick=()=>{
+ if(state.done[0].length===20&&state.done[1].length===40&&state.done[2].length===60&&$("missionCode").value.trim()==="204060"){
+  state.unlocked=true;save();$("missionFeedback").textContent=lang==="ar"?"انفتحت البوابة السرية!":"The secret gate is open!";renderWorlds();
+ }else $("missionFeedback").textContent=lang==="ar"?"أكمل العوالم الثلاثة وأدخل الشفرة الصحيحة.":"Complete the first three worlds and enter the correct code.";
+};
+function renderRecords(){
+ $("records").innerHTML="";
+ worlds.forEach((w,i)=>{const p=document.createElement("p");p.textContent=(lang==="ar"?w.ar:w.en)+" — "+(state.best[i]===undefined?"—":fmt(state.best[i]));$("records").appendChild(p)});
+}
+const translations={
+ ar:{lang:"🇬🇧 English",title:"العالم الخفي",intro:"أربع عوالم، 130 سؤالًا، وبوابة سرية لا تُفتح إلا للمستكشفين الحقيقيين.",start:"ابدأ المغامرة ↓",profile:"ملف المستكشف",xpLabel:"نقاط الخبرة",levelLabel:"المستوى",solvedLabel:"الأسئلة المحلولة",mapTitle:"خريطة العوالم",recordTitle:"🏆 أفضل أوقاتك",recordNote:"تُحفظ أسرع أوقاتك محليًا على هذا الجهاز. هذه ليست لوحة ترتيب مشتركة بين اللاعبين.",accountTitle:"🔐 حساب المستكشف",accountNote:"واجهة الحسابات ستُربط بخدمة آمنة في خطوة لاحقة. لا تدخل كلمة مرورك هنا في هذه النسخة التجريبية.",saveNote:"التقدم محفوظ في المتصفح على هذا الجهاز فقط.",reset:"إعادة ضبط التقدم",missionTitle:"🔐 المهمة السرية",missionText:"اجمع أعداد أسئلة العوالم الثلاثة الأولى، واكتبها متتابعة بالترتيب لفتح البوابة السرية."},
+ en:{lang:"🇸🇦 العربية",title:"THE HIDDEN REALM",intro:"Four worlds, 130 questions, and a secret gate reserved for true explorers.",start:"Begin Adventure ↓",profile:"Explorer Profile",xpLabel:"Experience Points",levelLabel:"Level",solvedLabel:"Questions Solved",mapTitle:"World Map",recordTitle:"🏆 Your Best Times",recordNote:"Your fastest times are saved on this device only. This is not a shared leaderboard.",accountTitle:"🔐 Explorer Account",accountNote:"Account features will be connected to a secure service later. Do not enter a password in this demo.",saveNote:"Progress is saved in this browser on this device only.",reset:"Reset Progress",missionTitle:"🔐 Secret Mission",missionText:"Combine the question counts of the first three worlds in order to unlock the secret gate."}
+};
+function setLanguage(l){
+ lang=l;const t=translations[l];
+ document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";
+ Object.keys(t).forEach(k=>{const id={title:"title",intro:"intro",start:"start",profile:"profile",xpLabel:"xpLabel",levelLabel:"levelLabel",solvedLabel:"solvedLabel",mapTitle:"mapTitle",recordTitle:"recordTitle",recordNote:"recordNote",accountTitle:"accountTitle",accountNote:"accountNote",saveNote:"saveNote",reset:"reset",missionTitle:"missionTitle",missionText:"missionText"}[k];if(id)$(id).textContent=t[k]});
+ $("language").textContent=t.lang;
+ updateStats();renderStage();renderRecords();
+}
+$("language").onclick=()=>setLanguage(lang==="ar"?"en":"ar");
+$("start").onclick=()=>{$("map").scrollIntoView({behavior:"smooth"});};
+$("reset").onclick=()=>{
+ if(confirm(lang==="ar"?"هل تريد حذف تقدمك المحلي وإعادة اللعبة من البداية؟":"Reset your local game progress?")){
+  state={done:[[],[],[],[]],best:{},unlocked:false};save();wi=0;qi=0;tries=3;hintsLeft=3;finishedQuestion=false;usedHint=false;elapsed=0;startTime=0;if(ticker)clearInterval(ticker);ticker=null;$("secretMission").hidden=true;renderStage();renderRecords();
+ }
 };
 setLanguage("ar");
+renderWorlds();
+renderRecords();
 </script>
 </body>
 </html>
-
